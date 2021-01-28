@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('partials/head') %> 
+<body>
+	<!-- Header -->
+	<%- include('partials/header') %> 
+	<!-- /Header -->
+	
+	<!-- Banner -->
+	<div class="banner"></div>
+	<!-- /Banner -->
+<!-- -------------------------------------------------------------- -->
+<div class="container">
+    <section class="detalle">
+        <div class="row">
+            <div class="titulo col-12">
+                <h2>Detalle de Produto: 
+                    <%= producto.name %> 
+                </h2>
+            </div>
+            <div class="col-12 caja">
+                <div class="contain text-left">
+                    <div class="row box">
+                        <div class="col-12 col-lg-8 imgContainer">
+                            <figure class="text-center">
+                                <img src="/images/products/<%= producto.image %> " alt="" class="img-fluid">
+                            </figure>
+                            <p class="description">
+                                <%= producto.description %> 
+                            </p>
+                        </div>
+                        <div class="col-12 col-lg-4 data-product">
+                            <h3 class="name">
+                                <%= producto.name %> 
+                            </h3>
+                            <% if (producto.discount != 0) { %>
+                                <span class="descuento">$<%= producto.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %> / <strong><%- producto.discount %>% OFF</strong></span>
+                            <% } %>
+                            <h2 class="price">$<%-(producto.price - producto.price * producto.discount / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")%>
+                            </h2>
+                            <p class="icons"><i class="fas fa-credit-card mr-3 my-4"></i>Pagá en 12 cuotas sin interés</p>
+                            <p class="icons"><i class="fas fa-store mr-3 my-4"></i>Retiro gratis en locales del vendedor</p>
+                            <button class="comprar">Comprar ahora</button>
+
+                        </div>
+                        
+                    </div>
+                </div>
+        </div>
+    </section>
+</div>
+<!-- ----------------------------------------------------------------------------- -->
+	<!-- footer -->
+	<%- include('partials/footer') %> 
+	<!-- /footer -->
+
+
+ <!-- scripts -->
+<%- include('partials/scripts.ejs') %> 
+<!-- end scripts -->
+
+</body>
+</html>
